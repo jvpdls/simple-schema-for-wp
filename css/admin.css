@@ -1,0 +1,13 @@
+textarea,
+select,
+input:not([type="submit"]) {
+  width: 400px;
+}
+
+textarea {
+  height: 100px;
+}
+
+#wpbody-content > div.wrap > form > table:nth-child(8) > tbody > tr > td {
+  display: grid;
+}
