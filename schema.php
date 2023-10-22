@@ -14,10 +14,16 @@ function set_organization_schema()
         "@context" => "https://schema.org",
         "@type" => $site_type,
         "name" => $site_title,
-        "description" => $site_description,
-        "url" => $site_url,
-        "logo" => $site_logo
+        "url" => $site_url
     );
+
+    if (strlen($site_description) > 0) {
+        $json_ld["description"] = $site_description;
+    }
+
+    if ($site_logo !== null) {
+        $json_ld["logo"] = $site_logo;
+    }
 
     $markup = '<script type="application/ld+json">' . json_encode($json_ld, JSON_PRETTY_PRINT) . '</script>';
     echo $markup;
@@ -94,10 +100,6 @@ function set_blogposting_schema()
             "@context" => "https://schema.org",
             "@type" => "BlogPosting",
             "headline" => $post_title,
-            "image" => array(
-                "@type" => "ImageObject",
-                "url" => $post_thumbnail
-            ),
             "datePublished" => $published_date,
             "dateModified" => $modified_date,
             "author" => array(
@@ -109,12 +111,7 @@ function set_blogposting_schema()
             "publisher" => array(
                 "@type" => $site_type,
                 "name" => $site_title,
-                "description" => $site_description,
-                "url" => $site_url,
-                "logo" => array(
-                    "@type" => "ImageObject",
-                    "url" => $site_logo
-                )
+                "url" => $site_url
             ),
             "description" => $post_excerpt,
             "mainEntityOfPage" => array(
@@ -122,6 +119,24 @@ function set_blogposting_schema()
                 "@id" => $post_permalink
             )
         );
+
+        if ($post_thumbnail !== null) {
+            $json_ld["image"] = array(
+                "@type" => "ImageObject",
+                "url" => $post_thumbnail
+            );
+        }
+
+        if (strlen($site_description) > 0) {
+            $json_ld["publisher"]["description"] = $site_description;
+        }
+
+        if ($site_logo !== null) {
+            $json_ld["publisher"]["logo"] = array(
+                "@type" => "ImageObject",
+                "url" => $site_logo
+            );
+        }
 
         $markup = '<script type="application/ld+json">' . json_encode($json_ld, JSON_PRETTY_PRINT) . '</script>';
 
