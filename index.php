@@ -16,12 +16,12 @@ include_once(plugin_dir_path(__FILE__) . 'settings/page-settings.php');
 
 function simple_schema_uninstall()
 {
-    unregister_setting('simple-schema-settings-group', 'simple_schema_site_type');
-    unregister_setting('simple-schema-settings-group', 'simple_schema_site_description');
-    unregister_setting('simple-schema-settings-group', 'simple_schema_site_logo_url');
-    unregister_setting('simple-schema-settings-group', 'simple_schema_contact_page');
-    unregister_setting('simple-schema-settings-group', 'simple_schema_about_page');
-    unregister_setting('simple-schema-settings-group', 'simple_schema_author_types');
+    unregister_setting('simple_schema_options', 'simple_schema_site_type');
+    unregister_setting('simple_schema_options', 'simple_schema_site_description');
+    unregister_setting('simple_schema_options', 'simple_schema_site_logo_url');
+    unregister_setting('simple_schema_options', 'simple_schema_contact_page');
+    unregister_setting('simple_schema_options', 'simple_schema_about_page');
+    unregister_setting('simple_schema_options', 'simple_schema_author_types');
     delete_option('simple_schema_site_type');
     delete_option('simple_schema_site_description');
     delete_option('simple_schema_site_logo_url');

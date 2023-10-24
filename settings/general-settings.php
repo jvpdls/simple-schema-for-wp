@@ -19,16 +19,16 @@ function simple_schema_register_general_settings()
         'default' => 'https://example.com/wp-content/uploads/logo.webp'
     );
 
-    add_settings_section('simple-schema-general-section', 'Simple Schema General Settings', null, 'simple-schema-settings');
+    add_settings_section('simple_schema_general_section', 'Simple Schema General Settings', null, 'simple-schema-settings');
 
-    add_settings_field('simple_schema_site_type', 'Site Type', 'render_simple_schema_site_type', 'simple-schema-settings', 'simple-schema-general-section');
-    register_setting('simple-schema-settings-group', 'simple_schema_site_type', $site_type_args);
+    add_settings_field('simple_schema_site_type', 'Site Type', 'render_simple_schema_site_type', 'simple-schema-settings', 'simple_schema_general_section');
+    register_setting('simple_schema_options', 'simple_schema_site_type', $site_type_args);
 
-    add_settings_field('simple_schema_site_description', 'Site Description', 'render_simple_schema_site_description', 'simple-schema-settings', 'simple-schema-general-section');
-    register_setting('simple-schema-settings-group', 'simple_schema_site_description', $site_desc_args);
+    add_settings_field('simple_schema_site_description', 'Site Description', 'render_simple_schema_site_description', 'simple-schema-settings', 'simple_schema_general_section');
+    register_setting('simple_schema_options', 'simple_schema_site_description', $site_desc_args);
 
-    add_settings_field('simple_schema_site_logo_url', 'Site Logo URL', 'render_simple_schema_site_logo_url', 'simple-schema-settings', 'simple-schema-general-section');
-    register_setting('simple-schema-settings-group', 'simple_schema_site_logo_url', $site_logo_args);
+    add_settings_field('simple_schema_site_logo_url', 'Site Logo URL', 'render_simple_schema_site_logo_url', 'simple-schema-settings', 'simple_schema_general_section');
+    register_setting('simple_schema_options', 'simple_schema_site_logo_url', $site_logo_args);
 }
 add_action('admin_init', 'simple_schema_register_general_settings');
 
@@ -36,8 +36,11 @@ function render_simple_schema_site_type()
 {
     $site_type = get_option('simple_schema_site_type');
 
+    if (empty($site_type)) {
+        $site_type = 'Organization';
+    }
+
     echo '<select name="simple_schema_site_type">';
-    echo '<option value="">Select a site type</option>';
 
     $options = array(
         'Organization' => 'Organization',

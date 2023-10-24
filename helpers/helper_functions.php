@@ -22,8 +22,12 @@ function get_organization_schema_optional_fields(&$json_ld, $site_description, $
     }
 }
 
-function get_blogposting_schema_optional_fields(&$json_ld, $post_thumbnail, $site_description, $site_logo)
+function get_blogposting_schema_optional_fields(&$json_ld, $author_description, $post_thumbnail, $site_description, $site_logo)
 {
+    if (!empty($author_description)) {
+        $json_ld["author"]["description"] = $author_description;
+    }
+
     if ($post_thumbnail) {
         $json_ld["image"] = array(
             "@type" => "ImageObject",

@@ -7,13 +7,13 @@ function simple_schema_register_page_settings()
         'sanitize_callback' => 'sanitize_text_field'
     );
 
-    add_settings_section('simple-schema-pages-section', 'Simple Schema Pages Settings', null, 'simple-schema-settings');
+    add_settings_section('simple_schema_pages_section', 'Simple Schema Pages Settings', null, 'simple-schema-settings');
 
-    add_settings_field('simple_schema_contact_page', 'Contact Page', 'render_simple_schema_contact_page', 'simple-schema-settings', 'simple-schema-pages-section');
-    register_setting('simple-schema-settings-group', 'simple_schema_contact_page', $webpage_args);
+    add_settings_field('simple_schema_contact_page', 'Contact Page', 'render_simple_schema_contact_page', 'simple-schema-settings', 'simple_schema_pages_section');
+    register_setting('simple_schema_options', 'simple_schema_contact_page', $webpage_args);
 
-    add_settings_field('simple_schema_about_page', 'About Page', 'render_simple_schema_about_page', 'simple-schema-settings', 'simple-schema-pages-section');
-    register_setting('simple-schema-settings-group', 'simple_schema_about_page', $webpage_args);
+    add_settings_field('simple_schema_about_page', 'About Page', 'render_simple_schema_about_page', 'simple-schema-settings', 'simple_schema_pages_section');
+    register_setting('simple_schema_options', 'simple_schema_about_page', $webpage_args);
 }
 add_action('admin_init', 'simple_schema_register_page_settings');
 

@@ -7,10 +7,10 @@ function simple_schema_register_author_settings()
         'sanitize_callback' => 'sanitize_simple_schema_author_types'
     );
 
-    add_settings_section('simple-schema-authors-section', 'Simple Schema Author Settings', null, 'simple-schema-settings');
+    add_settings_section('simple_schema_authors_section', 'Simple Schema Author Settings', null, 'simple-schema-settings');
 
-    add_settings_field('simple_schema_author_types', 'Author Types', 'render_simple_schema_author_types', 'simple-schema-settings', 'simple-schema-authors-section');
-    register_setting('simple-schema-settings-group', 'simple_schema_author_types', $author_types_args);
+    add_settings_field('simple_schema_author_types', 'Author Types', 'render_simple_schema_author_types', 'simple-schema-settings', 'simple_schema_authors_section');
+    register_setting('simple_schema_options', 'simple_schema_author_types', $author_types_args);
 }
 add_action('admin_init', 'simple_schema_register_author_settings');
 

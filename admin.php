@@ -19,7 +19,7 @@ function simple_schema_options_page_html()
         <h2>Simple Schema Options</h2>
         <form method="post" action="options.php">
             <?php
-            settings_fields('simple-schema-settings-group');
+            settings_fields('simple_schema_options');
             do_settings_sections('simple-schema-settings');
             submit_button();
             ?>

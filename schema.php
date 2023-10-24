@@ -99,7 +99,6 @@ function set_blogposting_schema()
             "author" => array(
                 "@type" => $author_type,
                 "name" => $author_name,
-                "description" => $author_description,
                 "url" => $author_url
             ),
             "publisher" => array(
@@ -114,7 +113,7 @@ function set_blogposting_schema()
             )
         );
 
-        get_blogposting_schema_optional_fields($json_ld, $post_thumbnail, $site_description, $site_logo);
+        get_blogposting_schema_optional_fields($json_ld, $author_description, $post_thumbnail, $site_description, $site_logo);
 
         $markup = '<script type="application/ld+json">' . json_encode($json_ld, JSON_PRETTY_PRINT) . '</script>';
 
