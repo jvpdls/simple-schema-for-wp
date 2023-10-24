@@ -4,7 +4,7 @@ include_once plugin_dir_path(__FILE__) . 'helpers/helper_functions.php';
 
 function set_organization_schema()
 {
-    $site_type = get_option('simple_schema_site_type');
+    $site_type = get_option('simple_schema_site_type', 'Organization');
     $site_title = get_bloginfo('name');
     $site_description = get_option('simple_schema_site_description');
     $site_logo = get_option('simple_schema_site_logo_url');
@@ -17,13 +17,7 @@ function set_organization_schema()
         "url" => $site_url
     );
 
-    if (strlen($site_description) > 0) {
-        $json_ld["description"] = $site_description;
-    }
-
-    if ($site_logo !== null) {
-        $json_ld["logo"] = $site_logo;
-    }
+    get_organization_schema_optional_fields($json_ld, $site_description, $site_logo);
 
     $markup = '<script type="application/ld+json">' . json_encode($json_ld, JSON_PRETTY_PRINT) . '</script>';
     echo $markup;
@@ -84,7 +78,7 @@ function set_blogposting_schema()
         $published_date =  get_the_date('c');
         $modified_date = get_the_modified_date('c');
 
-        $site_type = get_option('simple_schema_site_type');
+        $site_type = get_option('simple_schema_site_type', 'Organization');
         $site_title = get_bloginfo('name');
         $site_description = get_option('simple_schema_site_description');
         $site_logo = get_option('simple_schema_site_logo_url');
@@ -120,23 +114,7 @@ function set_blogposting_schema()
             )
         );
 
-        if ($post_thumbnail !== null) {
-            $json_ld["image"] = array(
-                "@type" => "ImageObject",
-                "url" => $post_thumbnail
-            );
-        }
-
-        if (strlen($site_description) > 0) {
-            $json_ld["publisher"]["description"] = $site_description;
-        }
-
-        if ($site_logo !== null) {
-            $json_ld["publisher"]["logo"] = array(
-                "@type" => "ImageObject",
-                "url" => $site_logo
-            );
-        }
+        get_blogposting_schema_optional_fields($json_ld, $post_thumbnail, $site_description, $site_logo);
 
         $markup = '<script type="application/ld+json">' . json_encode($json_ld, JSON_PRETTY_PRINT) . '</script>';
 
