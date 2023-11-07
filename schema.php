@@ -1,6 +1,6 @@
 <?php
 
-include_once plugin_dir_path(__FILE__) . 'helpers/helper_functions.php';
+include_once plugin_dir_path(__FILE__) . 'helpers/schema-helper.php';
 
 function set_organization_schema()
 {
