@@ -19,7 +19,7 @@ function simple_schema_register_general_settings()
         'default' => 'https://example.com/wp-content/uploads/logo.webp'
     );
 
-    add_settings_section('simple_schema_general_section', 'Simple Schema General Settings', null, 'simple-schema-settings');
+    add_settings_section('simple_schema_general_section', 'General Settings', null, 'simple-schema-settings');
 
     add_settings_field('simple_schema_site_type', 'Site Type', 'render_simple_schema_site_type', 'simple-schema-settings', 'simple_schema_general_section');
     register_setting('simple_schema_options', 'simple_schema_site_type', $site_type_args);

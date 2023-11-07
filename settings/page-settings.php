@@ -7,7 +7,7 @@ function simple_schema_register_page_settings()
         'sanitize_callback' => 'sanitize_text_field'
     );
 
-    add_settings_section('simple_schema_pages_section', 'Simple Schema Pages Settings', null, 'simple-schema-settings');
+    add_settings_section('simple_schema_pages_section', 'Pages Settings', null, 'simple-schema-settings');
 
     add_settings_field('simple_schema_contact_page', 'Contact Page', 'render_simple_schema_contact_page', 'simple-schema-settings', 'simple_schema_pages_section');
     register_setting('simple_schema_options', 'simple_schema_contact_page', $webpage_args);
@@ -23,7 +23,7 @@ function render_simple_schema_contact_page()
     $pages = get_pages(array('post_type' => 'page'));
 
     echo '<select name="simple_schema_contact_page">';
-    echo '<option value="">Select a contact page</option>';
+    echo '<option value="none">Select a contact page</option>';
 
     foreach ($pages as $page) {
         $selected = ($contact_page == $page->ID) ? 'selected' : '';
@@ -39,7 +39,7 @@ function render_simple_schema_about_page()
     $pages = get_pages(array('post_type' => 'page'));
 
     echo '<select name="simple_schema_about_page">';
-    echo '<option value="">Select an about page</option>';
+    echo '<option value="none">Select an about page</option>';
 
     foreach ($pages as $page) {
         $selected = ($about_page == $page->ID) ? 'selected' : '';
