@@ -1,6 +1,6 @@
 textarea,
 select,
-input:not([type="submit"]) {
+input:not([type="submit"]):not([type="checkbox"]) {
   width: 400px;
 }
 
