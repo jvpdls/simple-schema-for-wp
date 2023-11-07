@@ -4,7 +4,7 @@ function simple_schema_options_page()
 {
     add_menu_page(
         'Simple Schema Plugin',
-        'Simple Schema',
+        'Schema for SEO',
         'manage_options',
         'simple-schema-settings',
         'simple_schema_options_page_html'
