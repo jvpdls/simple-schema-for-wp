@@ -13,6 +13,8 @@ include_once(plugin_dir_path(__FILE__) . 'schema.php');
 include_once(plugin_dir_path(__FILE__) . 'settings/general-settings.php');
 include_once(plugin_dir_path(__FILE__) . 'settings/author-settings.php');
 include_once(plugin_dir_path(__FILE__) . 'settings/page-settings.php');
+include_once(plugin_dir_path(__FILE__) . 'settings/uninstall-settings.php');
+include_once plugin_dir_path(__FILE__) . 'helpers/settings-helper.php';
 
 function simple_schema_uninstall()
 {
@@ -22,13 +24,17 @@ function simple_schema_uninstall()
     unregister_setting('simple_schema_options', 'simple_schema_contact_page');
     unregister_setting('simple_schema_options', 'simple_schema_about_page');
     unregister_setting('simple_schema_options', 'simple_schema_author_types');
-    delete_option('simple_schema_site_type');
-    delete_option('simple_schema_site_description');
-    delete_option('simple_schema_site_logo_url');
-    delete_option('simple_schema_contact_page');
-    delete_option('simple_schema_about_page');
-    delete_option('simple_schema_author_types');
 
     remove_menu_page('simple-schema-settings');
+
+    if (get_delete_options_checkbox() == 1) {
+        delete_option('simple_schema_site_type');
+        delete_option('simple_schema_site_description');
+        delete_option('simple_schema_site_logo_url');
+        delete_option('simple_schema_contact_page');
+        delete_option('simple_schema_about_page');
+        delete_option('simple_schema_author_types');
+        delete_option('simple_schema_delete_options_checkbox');
+    }
 }
 register_uninstall_hook(__FILE__, 'simple_schema_uninstall');
