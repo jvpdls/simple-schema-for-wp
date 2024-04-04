@@ -1,5 +1,5 @@
 
-# Simple Schema for SEO
+# Simple Schema for WordPress
 This WordPress plugin aims to enrich your blog with structured metadata, essential for improving SEO and visibility in search engines. In a simple and functional way, it inserts relevant schemas for blog pages, ensuring that your content is more easily understandable and highlighted by search engines like Google.
 
 ## Characteristics
