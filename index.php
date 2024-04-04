@@ -2,7 +2,7 @@
 
 /**
  * Plugin Name: Simple Schema for WP Sites
- * Description: A basic plugin that adds valid basic schema to your blog.
+ * Description: A basic plugin that adds valid basic schema to your WordPress blog.
  * Version: 1.0.0
  * Author: João Santos
  * Author URI: https://joaosantos.net.br/
