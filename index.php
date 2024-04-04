@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Plugin Name: Simple Schema for SEO
+ * Plugin Name: Simple Schema for WP Sites
  * Description: A basic plugin that adds valid basic schema to your blog.
  * Version: 1.0.0
  * Author: João Santos
